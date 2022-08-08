@@ -23,3 +23,5 @@ idf_build_executable(libespidf.elf)
 # used to query the components in the build script
 idf_build_get_property(comps BUILD_COMPONENTS)
 set(BUILD_COMPONENTS ${comps} CACHE STRING "all esp-idf components" FORCE)
+
+target_compile_definitions(__idf_bt PRIVATE "MYNEWT_VAL_BLE_GATT_MAX_PROCS=(16)")
