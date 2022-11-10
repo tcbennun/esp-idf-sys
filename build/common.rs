@@ -17,10 +17,14 @@ pub const V_4_3_2_PATCHES: &[&str] = &[
     "patches/missing_riscv_atomics_fix.diff",
     "patches/missing_xtensa_atomics_fix.diff",
     "patches/pthread_destructor_fix.diff",
+    "patches/esp_app_format_weak_v4.3.diff",
 ];
 
 #[allow(dead_code)]
 pub const MASTER_PATCHES: &[&str] = &[];
+
+#[allow(dead_code)]
+pub const V_4_4_2_PATCHES: &[&str] = &["patches/esp_app_format_weak_v4.4.diff"];
 
 const TOOLS_WORKSPACE_INSTALL_DIR: &str = ".embuild";
 
@@ -44,7 +48,7 @@ impl EspIdfComponents {
 
     #[allow(dead_code)]
     pub fn from_esp_idf(esp_idf: &Path) -> Result<Self> {
-        Self::from_dirs(&[esp_idf.join("components")])
+        Self::from_dirs([esp_idf.join("components")])
     }
 
     #[allow(dead_code)]
@@ -282,7 +286,7 @@ impl InstallDir {
             InstallDirLocation::FromEnv => Self::FromEnv,
             _ => Self::Custom({
                 if let Some(path) = path {
-                    Path::new(path).abspath_relative_to(&workspace_dir()?)
+                    Path::new(path).abspath_relative_to(workspace_dir()?)
                 } else {
                     bail!(
                         "Invalid installation directory format. \

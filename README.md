@@ -146,7 +146,9 @@ The following configuration options are available:
 
     > ⚠️
     > A setting contained in a more specific defaults file will override the
-    > same setting specified in a less specific one.
+    > same setting specified in a less specific one. For example, in a debug
+    > build, flags in `sdkconfig.debug` override those in `sdkconfig.defaults`.
+    
 
 - ### *`esp_idf_sdkconfig`*, `$ESP_IDF_SDKCONFIG`
 
@@ -331,7 +333,9 @@ dependencies' `Cargo.toml`.
 > **Note**  
 > By only specifying the `bindings_header` field, one can extend the set of *esp-idf*
 > bindings that were generated from
-> [src/include/esp-idf/bindings.h](src/include/esp-idf/bindings.h).
+> [src/include/esp-idf/bindings.h](src/include/esp-idf/bindings.h). To do this you need to create
+> a `*.h` header file in your project source, and reference that in the `bindings_header` variable. You can
+> then include extra esp-idf header files from there.
 
 An extra component can be specified like this:
 

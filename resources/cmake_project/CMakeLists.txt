@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
+set(IDF_TARGET $ENV{IDF_TARGET} CACHE STRING "IDF Build Target")
+
 include($ENV{IDF_PATH}/tools/cmake/idf.cmake)
 project(libespidf C)
 

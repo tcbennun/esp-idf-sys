@@ -8,9 +8,14 @@ pub use bindings::*;
 pub use error::*;
 
 #[doc(hidden)]
+pub use build_time;
+#[doc(hidden)]
+pub use const_format;
+#[doc(hidden)]
 pub use patches::PatchesRef;
 
 mod alloc;
+mod app_desc;
 mod error;
 mod panic;
 mod patches;
